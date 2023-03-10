@@ -158,6 +158,10 @@ a {
 		font-size: 24pt;
 	}
 
+	.section__center-block {
+		width: 80%;
+	}
+
 	.top-logo { width: 80%; }
 
 	.flex-blocks--images {
@@ -165,7 +169,7 @@ a {
 	}
 
 	.flex-blocks--images>img {
-		max-width: 80%;
+		max-width: 100%;
 		align-self: center;
 		margin: 32px auto; 
 	}
