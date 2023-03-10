@@ -1,219 +1,156 @@
-body {
-font-family: 'Roboto', sans-serif;
-padding: 18px 500px 18px 500px;
+:root {
+	--blue: #1896d3;
+	--dark-grey: #202020;
+	--font-title: "Bebas Neue", sans-serif;
+	--font-regular: "Roboto", sans-serif;
 }
 
-
-.logoTop {
-width:1000px;
-height:100%;
+body {
+	font-family: var(--font-regular);
+	padding: 32px 0;
+	width: 880px;
+	margin: auto;
+	color: #202020;
+	font-weight: 400;
 }
 
 h1 {
-font-family: 'Bebas Neue', cursive;
-font-size: 32pt;
-padding:0;
-margin:0;
-color: #202020;
+	font-family: var(--font-title);
+	font-size: 32pt;
+	padding: 0;
+	margin: 0;
+	color: #202020;
 }
 
 h2 {
-font-size: 24pt;
-font-weight: 700;
-text-transform: uppercase;
+	font-size: 24pt;
+	text-transform: uppercase;
 }
 
 h3 {
-font-size: 16pt;
-font-weight: 700;
+	font-size: 16pt;
 }
 
 a {
-color:#1896D3;
-font-weight: 700;
+	color: var(--blue);
+}
+
+.text--center {
+	text-align: center;
+}
+
+.text--light-grey {
+	color: #888;
+}
+
+.font-display {
+	font-size: 16pt;
+	margin: 0;
+}
+
+.top-logo {
+	width: 60%;
+	height: 100%;
+	display: block;
+	margin: 0 auto;
 }
 
 .section {
-padding:18px;
-border: 3px solid #202020;
-border-radius: 4px;
-margin: 0 0 18px 0;
+	padding: 20px;
+	border: 3px solid #202020;
+	border-radius: 4px;
+	margin-bottom: 18px;
 }
 
-.center {
-display: block;
-margin-left: auto;
-margin-right: auto;
-text-align: center;
-width: 50%;
+.section__center-block {
+	display: block;
+	margin: 0 auto;
+	width: 50%;
 }
 
-.textCenter {
-text-align: center;
+.flex-blocks {
+	display: flex;
+	gap: 8px;
 }
 
-.lightGrey {
-color: #888888;
+.flex-blocks>* {
+	display: flex;
+	align-items: center;
+	flex: 1 1 0;
+	border-radius: 4px;
+	justify-content: center;
+	text-align: center;
+	font-family: var(--font-title);
+	font-size: 15pt;
+	color: white;
+	text-decoration: none;
 }
 
-.fontsColorsImage {
-height: 100%;
-width: 50%;
+.flex-blocks>span,
+.flex-blocks>a {
+	border: 3px solid var(--dark-grey);
+	height: 48px;
 }
 
-.fontDisplay {
-font-size:16pt;
-margin:0;
-}
-
-.downloadText {
-font-size:14pt;
-margin:0;
-line-height: 22px;
-font-family: 'Roboto', sans-serif;
-font-weight: 900;
-}
-
-.mediaBreak {
-display:none;
-}
-
-.flex-container {
-display: flex;
-flex-wrap: wrap;
-width: 100%;
-}
-
-.flex-container img {
-flex-basis: 33.33%;
-max-width: 33.33%;
-}
-
-
-
-/* Palette */
-.color-blocks {
-display: flex;
-justify-content: center;
+.flex-blocks>img {
+	max-width: 32%;
+	/* Hack to stretch images*/
 }
 
 .block {
-display: flex;
-justify-content: center;
-align-items: center;
-width: 100%;
-height: 50px;
-margin: 0 4px;
-border-radius: 4px;
-font-family: 'Bebas Neue', cursive;
-font-size: 15pt;
-border: 3px solid #202020;
+	align-items: center;
+	width: 100%;
+	height: 50px;
+	margin: 0 4px;
+	border-radius: 4px;
+	font-family: var(--font-title);
+	font-size: 15pt;
+	border: 3px solid #202020;
+	text-transform: uppercase;
+	font-weight: 700;
 }
 
-.white {
-background-color: #ffffff;
-color: #202020;
-text-transform: uppercase;
+.block--white {
+	background-color: #ffffff;
+	color: #202020;
 }
 
-.dark-gray {
-background-color: #202020;
-color: #ffffff;
-text-transform: uppercase;
+.block--dark-gray {
+	background-color: #202020;
+	color: #ffffff;
 }
 
-.blue {
-background-color: #1896D3;
-color: #ffffff;
-text-transform: uppercase;
+.block--blue {
+	background-color: #1896d3;
+	color: #ffffff;
 }
 
-.bgGrey {
-background-color: #4f4f4f;
-color: #ffffff;
-text-transform: uppercase;
+.block--light-gray {
+	background-color: #4f4f4f;
+	color: #ffffff;
 }
 
-.threeD {
-background-color: #1896D3;
-background-image: url(images/mom3DBG.jpg);
-background-size: cover;
-color: #202020;
+.block--download {
+	background-color: var(--blue);
+	font-family: var(--font-regular);
+	border: 3px solid #00000022 !important;
+	font-size: 14pt;
+	transition: filter 0.1s ease-in-out;
 }
 
-.downloadButton {
-background-color: #1896D3;
-background-size: cover;
-color: #ffffff;
-border: 3px solid #1083bd;
-text-decoration: none;
+.block--download:hover {
+	filter: brightness(1.05);
 }
 
-.downloadButton:hover {
-background-color: #107ab0;
-background-size: cover;
-color: #ffffff;
-border: 3px solid #0b6b9b;
-cursor: pointer;
+.block--image-bg {
+	background-image: url(images/mom3DBG.jpg);
+	background-size: cover;
+	color: #202020;
 }
-
-
-
-
-@media only screen and (max-width: 1540px) {
-
-    body {
-    padding: 18px 100px;
-    }
-
-    .downloadButton {
-    padding:4px;
-    }
-
-}
-
-
-
 
 @media only screen and (max-width: 811px) {
-    /* For mobile phones: */
-
-    body {
-    padding: 18px 18px 18px 18px;
-    }
-
-    h1 {
-    font-size: 18pt;
-    }
-
-    h2 {
-    font-size: 24pt;
-    font-weight: 700;
-    text-transform: uppercase;
-    }
-
-    .logoTop {
-    width:300px;
-    height:100%;
-    }
-
-    .fontDisplay {
-    font-size:10pt;
-    margin:0;
-    }
-
-    .mediaBreak {
-    display:block;
-    }
-
-    .fontsColorsImage {
-    height: 100%;
-    width: 100%;
-    }
-
-    .flex-container img {
-    flex-basis: 100%;
-    max-width: 100%;
-    }
-
+	body {
+		width: auto;
+		padding: 24px;
+	}
 }
