@@ -93,8 +93,8 @@ a {
 }
 
 .flex-blocks>img {
-	max-width: 32%;
 	/* Hack to stretch images*/
+	max-width: 32%;
 }
 
 .block {
@@ -152,5 +152,21 @@ a {
 	body {
 		width: auto;
 		padding: 24px;
+	}
+
+	h1 {
+		font-size: 24pt;
+	}
+
+	.top-logo { width: 80%; }
+
+	.flex-blocks--images {
+		display: block;
+	}
+
+	.flex-blocks--images>img {
+		max-width: 80%;
+		align-self: center;
+		margin: 32px auto; 
 	}
 }
