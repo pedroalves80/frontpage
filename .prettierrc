@@ -9,9 +9,9 @@
   "bracketSpacing": true,
   "overrides": [
     {
-      "files": "*.json",
+      "files": "*.{scss,css,html,xml}",
       "options": {
-        "singleQuote": false
+        "tabWidth": 4
       }
     }
   ]
