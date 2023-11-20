@@ -4,23 +4,18 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet" />
   </head>
 
   <body>
     <header>
       <div class="hero">
-        <img style="width: 25rem" src="./images/mom_titlecard.svg" alt="Momentum Mod's Titlecard Logo" />
+        <img style="width: 40rem" src="./images/mom_titlecard.svg" alt="Momentum Mod's Titlecard Logo" />
         <h2>Explore the best of Source Movement, 100% free</h2>
-        <!-- TO DO : CHANGE TAGLINE MAYBE? -->
+        <!-- TODO: CHANGE TAGLINE MAYBE? -->
         <div>
-          <a>PLAY NOW</a>
-          <a>DASHBOARD</a>
+          <a class="buttonPlayNow" target="_blank" href="https://store.steampowered.com/app/669270/Momentum_Mod/">PLAY NOW</a>
+          <a class="buttonDashboard" target="_blank" href="https://momentum-mod.org/dashboard">DASHBOARD</a>
         </div>
       </div>
     </header>
@@ -64,6 +59,7 @@
       </section>
 
       <!--  FEATURES  -->
+      <!--  TODO: CHANGE IMAGES TO SVGs, eventually lotti animations  -->
 
       <section id="features">
         <div class="featuresTitle">
@@ -92,7 +88,7 @@
         <div class="featureRight">
           <h2>Progression system</h2>
           <p>Flex those thousands of hours of grinding surf_kitsune with global EXP gained just by playing the game!</p>
-          <img src="./images/ui/stats.png" alt="Momentum Mod's Map Selector" />
+          <img src="./images/ui/lvl.png" alt="Momentum Mod's Map Selector" />
         </div>
       </section>
 
@@ -100,40 +96,42 @@
 
       <section id="andMuchMore">
         <h1>And much more!</h1>
-        <div>
-          <iconify-icon icon="mdi:wifi-strength-off"></iconify-icon>
-          <h2>Single-player client</h2>
-          <p>No multiplayer game server connection required to play!</p>
-        </div>
+        <div class="muchMore-flex">
+          <div id="feature-offline">
+            <iconify-icon icon="mdi:wifi-strength-off"></iconify-icon>
+            <h2>Single-player client</h2>
+            <p>No multiplayer game server connection required to play!</p>
+          </div>
 
-        <div>
-          <iconify-icon icon="mdi:slide"></iconify-icon>
-          <h2>Client movement fixes</h2>
-          <p>Smooth gameplay with auto-jump, no ramp bugs, and consistent slope jump speeds built-in!</p>
-        </div>
+          <div id="feature-client-fix">
+            <iconify-icon icon="mdi:slide"></iconify-icon>
+            <h2>Client movement fixes</h2>
+            <p>Smooth gameplay with auto-jump, no ramp bugs, and consistent slope jump speeds built-in!</p>
+          </div>
 
-        <div>
-          <iconify-icon icon="mdi:lightbulb"></iconify-icon>
-          <h2>Original entities</h2>
-          <p>Easier mapping and interesting new opportunities for mappers!</p>
-        </div>
+          <div id="feature-entity">
+            <iconify-icon icon="mdi:lightbulb"></iconify-icon>
+            <h2>Original entities</h2>
+            <p>Easier mapping and interesting new opportunities for mappers!</p>
+          </div>
 
-        <div>
-          <iconify-icon icon="mdi:school"></iconify-icon>
-          <h2>In-Game Tutorials</h2>
-          <p>No more watching random YouTube videos to learn; learn through playing!</p>
-        </div>
+          <div id="feature-learn">
+            <iconify-icon icon="mdi:school"></iconify-icon>
+            <h2>In-Game Tutorials</h2>
+            <p>No more watching random YouTube videos to learn; learn through playing!</p>
+          </div>
 
-        <div>
-          <iconify-icon icon="mdi:account-cowboy-hat"></iconify-icon>
-          <h2>Community-focused customization</h2>
-          <p>A game-wide cosmetic shop with items unlocked purely through gameplay!</p>
-        </div>
+          <div id="feature-store">
+            <iconify-icon icon="mdi:account-cowboy-hat"></iconify-icon>
+            <h2>Community-focused customization</h2>
+            <p>A game-wide cosmetic shop with items unlocked purely through gameplay!</p>
+          </div>
 
-        <div>
-          <iconify-icon icon="mdi:earth"></iconify-icon>
-          <h2>Fully Custom Campaigns</h2>
-          <p>Designed to introduce complete newbies to the modes, story and speedrun modes included!</p>
+          <div id="feature-campaign">
+            <iconify-icon icon="mdi:earth"></iconify-icon>
+            <h2>Fully Custom Campaigns</h2>
+            <p>Designed to introduce complete newbies to the modes, story and speedrun modes included!</p>
+          </div>
         </div>
       </section>
 
@@ -141,54 +139,81 @@
     </main>
     <footer>
       <div class="socialMediaLogos">
-        <iconify-icon icon="simple-icons:steam"></iconify-icon>
-        <iconify-icon icon="simple-icons:twitter"></iconify-icon>
-        <iconify-icon icon="simple-icons:youtube"></iconify-icon>
-        <iconify-icon icon="simple-icons:twitch"></iconify-icon>
-        <iconify-icon icon="simple-icons:github"></iconify-icon>
+        <div>
+          <a target="_blank" href="https://store.steampowered.com/app/669270/Momentum_Mod/">
+            <iconify-icon icon="simple-icons:steam"></iconify-icon>
+          </a>
+          <a target="_blank" href="https://twitter.com/MomentumMod">
+            <iconify-icon icon="simple-icons:twitter"></iconify-icon>
+          </a>
+          <a target="_blank" href="https://www.youtube.com/@MomentumMod">
+            <iconify-icon icon="simple-icons:youtube"></iconify-icon>
+          </a>
+          <a target="_blank" href="https://www.twitch.tv/MomentumMod">
+            <iconify-icon icon="simple-icons:twitch"></iconify-icon>
+          </a>
+          <a target="_blank" href="https://github.com/momentum-mod">
+            <iconify-icon icon="simple-icons:github"></iconify-icon>
+          </a>
+        </div>
       </div>
 
       <div class="links">
         <div>
           <p>Support us</p>
           <div>
-            <iconify-icon class="footer-social-icon" icon="mdi:hand-coin"></iconify-icon>
-            <p>Donate</p>
+            <a target="_blank" href="https://opencollective.com/momentum-mod">
+              <iconify-icon class="footer-social-icon" icon="mdi:hand-coin"></iconify-icon>
+              <p>Donate</p>
+            </a>
           </div>
           <div>
-            <iconify-icon class="footer-social-icon" icon="mdi:code-braces-box"></iconify-icon>
-            <p>Contribute</p>
+            <a target="_blank" href="https://github.com/momentum-mod">
+              <iconify-icon class="footer-social-icon" icon="mdi:code-braces-box"></iconify-icon>
+              <p>Contribute</p>
+            </a>
           </div>
         </div>
         <div>
           <p>Let's chat</p>
           <div>
-            <iconify-icon class="footer-social-icon" icon="simple-icons:discord"></iconify-icon>
-            <p>Discord</p>
+            <a target="_blank" href="https://discord.gg/momentummod">
+              <iconify-icon class="footer-social-icon" icon="simple-icons:discord"></iconify-icon>
+              <p>Discord</p>
+            </a>
           </div>
           <div>
-            <iconify-icon class="footer-social-icon" icon="mdi:forum"></iconify-icon>
-            <p>Forums</p>
+            <a target="_blank" href="https://forum.momentum-mod.org/">
+              <iconify-icon class="footer-social-icon" icon="mdi:forum"></iconify-icon>
+              <p>Forums</p>
+            </a>
           </div>
         </div>
         <div>
           <p>Resources</p>
           <div>
-            <iconify-icon class="footer-social-icon" icon="mdi:post"></iconify-icon>
-            <p>Blog</p>
+            <a target="_blank" href="https://blog.momentum-mod.org/">
+              <iconify-icon class="footer-social-icon" icon="mdi:post"></iconify-icon>
+              <p>Blog</p>
+            </a>
           </div>
           <div>
-            <iconify-icon class="footer-social-icon" icon="mdi:bookshelf"></iconify-icon>
-            <p>Docs</p>
+            <a target="_blank" href="https://docs.momentum-mod.org/">
+              <iconify-icon class="footer-social-icon" icon="mdi:bookshelf"></iconify-icon>
+              <p>Docs</p>
+            </a>
           </div>
           <div>
-            <img src="./images/momicon.svg" class="footer-social-icon" alt="Momentum Mod's Map Selector" />
-            <p>Branding</p>
+            <!--TODO: Change this pdf link to the site version we made-->
+            <a target="_blank" href="https://momentum-mod.org/assets/Momentum_Branding_Guidelines.pdf">
+              <img src="./images/momicon.svg" class="footer-social-icon" alt="Momentum Mod's Map Selector" />
+              <p>Branding</p>
+            </a>
           </div>
         </div>
       </div>
 
-      <p>
+      <p style="color: #8f8f8f; text-align: center; padding: 1.5rem">
         Copyright &#169; Momentum Mod
         <!--  TODO: use an onLoad or something to some func once we have more J -->
         <script type="text/javascript">
