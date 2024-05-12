@@ -1,33 +1,7 @@
 @import 'normalize.css';
 
-@font-face {
-  font-family: 'BebasNeue';
-  src: url('BebasNeue-Thin.woff') format('woff');
-  font-weight: thin;
-}
-
-@font-face {
-  font-family: 'BebasNeue';
-  src: url('BebasNeue-Light.woff') format('woff');
-  font-weight: light;
-}
-
-@font-face {
-  font-family: 'BebasNeue';
-  src: url('BebasNeue-Book.woff') format('woff');
-  font-weight: 200;
-}
-
-@font-face {
-  font-family: 'BebasNeue';
-  src: url('BebasNeue-Regular.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'BebasNeue';
-  src: url('BebasNeue-Bold.woff') format('woff');
-  font-weight: bold;
-}
+@import './styling/fonts/BebasNeue/400.css';
+@import './styling/fonts/BebasNeue/700.css';
 
 body {
   font-family: 'Roboto', sans-serif;
@@ -60,7 +34,7 @@ header {
     > div a {
       padding: 0.5rem 1rem;
       margin: 0.5rem;
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'Bebas Neue Momentum', sans-serif;
       font-weight: 300;
       font-size: 25pt;
       border-radius: 5px;
@@ -169,12 +143,12 @@ footer {
 }
 
 h1 {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Bebas Neue Momentum', sans-serif;
   font-size: 30pt;
 }
 
 h2 {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Bebas Neue Momentum', sans-serif;
   font-weight: 500;
   font-size: 25pt;
 }
