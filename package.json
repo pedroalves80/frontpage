@@ -22,5 +22,9 @@
     "**/*.{js,html,css,md}": [
       "prettier --write"
     ]
+  },
+  "dependencies": {
+    "@mdi/svg": "^7.4.47",
+    "simple-icons": "^11.14.0"
   }
 }
