@@ -5,7 +5,7 @@
 
 /* I'm not using these colours very religiously, we have so many different
    shades/variants going on with this site that set palettes are too restrictive. */
-@import 'styling/colors/colors-css-vars.css';
+@import '../../styling/colors/colors-css-vars.css';
 
 :root {
   --font-display: 'Bebas Neue Momentum', sans-serif;
