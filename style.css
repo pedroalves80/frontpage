@@ -7,16 +7,22 @@
    shades/variants going on with this site that set palettes are too restrictive. */
 @import 'styling/colors/colors-css-vars.css';
 
+:root {
+  --font-display: 'Bebas Neue Momentum', sans-serif;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
-  background-color: #151517;
+  background-color: rgb(var(--gray-900));
   color: white;
-}
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 
-p {
-  margin: 0;
-  line-height: 1.5;
+  p {
+    margin: 0;
+    line-height: 1.5;
+  }
 }
 
 header {
@@ -434,15 +440,14 @@ footer {
   }
 }
 
-h1 {
-  font-family: 'Bebas Neue Momentum', sans-serif;
-  font-size: 30pt;
-}
-
-h2 {
-  font-family: 'Bebas Neue Momentum', sans-serif;
-  font-weight: 500;
-  font-size: 25pt;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  margin: 0;
 }
 
 a {
