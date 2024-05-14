@@ -3,6 +3,10 @@
 @import './styling/fonts/BebasNeue/400.css';
 @import './styling/fonts/BebasNeue/700.css';
 
+/* I'm not using these colours very religiously, we have so many different
+   shades/variants going on with this site that set palettes are too restrictive. */
+@import 'styling/colors/colors-css-vars.css';
+
 body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
@@ -17,17 +21,117 @@ p {
 
 header {
   width: 100%;
+  height: 768px;
+  display: grid;
+  place-items: center;
+  position: relative;
+
+  /* TODO https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images */
+  background-image: url('/images/BGLight.jpg');
   background-size: cover;
 
+  .hero {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    .logo {
+      width: 48rem;
+    }
+
+    .subheading {
+      margin-top: 1.5rem;
+      line-height: 1;
+
+      font-size: 2.5rem;
+      font-weight: 700;
+      font-family: var(--font-display);
+
+      /* TODO: This looks pretty shit, at least on Chromium.
+      Important enough that we should just make this as an SVG, in the exact same fashion
+      as the main logo. Also the copy is shit. */
+      -webkit-text-stroke: 8px rgb(var(--gray-700));
       paint-order: stroke fill;
     }
+
+    .buttons {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+
+      a {
+        padding: 0.25rem 1.5rem;
+        position: relative;
+
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 2.675rem;
+
+        border: 1px solid rgba(255 255 255 / 0.05);
+        border-radius: 0.25rem;
+        background-origin: border-box !important;
+        backdrop-filter: blur(4px);
+        box-shadow:
+          0 2px 12px rgb(0 0 0 / 0.4),
+          0 1px 4px rgb(0 0 0 / 0.3);
+        text-shadow: 0 3px 4px rgba(0 0 0 / 0.325);
+
+        transition-property: box-shadow, border;
+        transition-duration: 0.1s;
+        transition-timing-function: ease-in-out;
+
+        /* Non-standard colors because they look good and these buttons are special! */
+        &.play-now {
+          background: linear-gradient(
+            45deg,
+            rgba(0 140 255 / 0.6),
+            rgba(20 173 255 / 0.6)
+          );
+        }
+
+        &.dashboard {
+          background: linear-gradient(
+            135deg,
+            rgba(255 0 67 / 0.6),
+            rgba(255 0 85 / 0.6)
+          );
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          transition: background-color 0.1s ease-in-out;
+          background-color: rgb(0 0 0 / 0);
+          height: 100%;
+          border-radius: 0.25rem;
+          width: 100%;
+          top: 0;
+          left: 0;
+        }
+
+        &:hover {
+          border: 1px solid rgba(255 255 255 / 0.1);
+
+          &::after {
+            background-color: rgb(255 255 255 / 0.15);
+          }
+        }
+      }
     }
   }
 
+  &::after {
+    width: 100%;
+    height: 15%;
+    mix-blend-mode: multiply;
+    bottom: 0;
+    left: 0;
+    position: absolute;
 
+    content: '';
+    background: linear-gradient(transparent, rgb(24 105 211 / 0.5));
+    border-bottom: 1px solid rgb(0 0 0 / 1);
+  }
 }
 
 
