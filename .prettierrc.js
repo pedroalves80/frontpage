@@ -1,5 +1,3 @@
-// prettier.config.js, .prettierrc.js, prettier.config.mjs, or .prettierrc.mjs
-
 /** @type {import("prettier").Config} */
 const config = {
   printWidth: 80,
@@ -22,7 +20,7 @@ const config = {
       files: '*.html',
       options: {
         parser: 'html',
-        printWidth: 180
+        printWidth: 120
       }
     }
   ]
