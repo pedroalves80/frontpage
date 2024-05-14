@@ -21,10 +21,52 @@
     </header>
 
     <main>
+      <div class="section-wrapper">
+        <section id="WhatIsMomentum">
+          <div class="description">
+            <h1>What is Momentum Mod?</h1>
+            <p>
+              Momentum Mod is a free, standalone game built on the Strata Source Engine that aims to faithfully recreate, centralize, and improve upon the movement game modes found
+              in Counter-Strike, Team Fortress, Half-Life 2, Titanfall 2, and Quake.
+            </p>
+            <p>
+              We aim to provide the best experience found from all of your favorite games and servers, all in one convenient place, all for
+              frEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE EEEEEEEEEEEEEEEEEEEEEEEEEEE EEEEEEeeEEEEEEEEEEEEEE
+              EEEEEEEEEEEEEEEEEEEEEeeEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEee..
+            </p>
           </div>
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/Cep1KZKznZo?si=owasrkLY6TWAC4_F&amp;controls=0"
+            title="YouTube Video Player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </section>
 
+        <section id="Gamemodes">
+          <h1>Gamemodes</h1>
+          <!-- Populated by JS -->
+          <div id="GamemodeSelection" class="selection">
+            <div id="TimeBar">
+              <span></span>
+            </div>
+            <template id="GamemodeSelectionTemplate">
+              <button type="button">
+                <img src="" />
+                <h1></h1>
+              </button>
+            </template>
           </div>
+          <div id="GamemodeContainer" class="gamemodes">
+            <template id="GamemodeTemplate">
+              <div class="gamemode">
+                <video id="GamemodeVideo" autoplay muted loop preload="metadata"></video>
+                <div id="GamemodeDetails" class="details"></div>
+              </div>
+            </template>
           </div>
+        </section>
+      </div>
 
     </main>
     <footer>
