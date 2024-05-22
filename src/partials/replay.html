@@ -1,0 +1,41 @@
+<div class="header">
+  <svg viewBox="0 0 24 24">[[ path mdi/movie-open ]]</svg>
+  <h1>Replay</h1>
+</div>
+
+<div class="time-and-ticks">
+  <div class="time">
+    <h2>Time</h2>
+    <h1 id="Time"></h1>
+  </div>
+  <div class="ticks">
+    <h2>Ticks</h2>
+    <h1 id="Ticks">aa</h1>
+  </div>
+</div>
+
+<div class="progress">
+  <label for="Progress" style="display: none">Progress</label>
+  <input type="range" id="Progress" />
+  <!--  Populated by JS-->
+  <div id="Segments" class="segments"></div>
+</div>
+
+<div class="buttons">
+  <button type="button" onclick="Replay.previousSegment()">
+    <svg viewBox="0 0 24 24">[[ path mdi/skip-previous ]]</svg>
+  </button>
+  <button type="button" onclick="Replay.previousTick()">
+    <svg viewBox="0 0 24 24">[[ path mdi/step-backward ]]</svg>
+  </button>
+  <button type="button" class="toggle" onclick="Replay.togglePlay()">
+    <svg viewBox="0 0 24 24" class="pause">[[ path mdi/pause ]]</svg>
+    <svg viewBox="0 0 24 24" class="play">[[ path mdi/play ]]</svg>
+  </button>
+  <button type="button" onclick="Replay.nextTick()">
+    <svg viewBox="0 0 24 24">[[ path mdi/step-forward ]]</svg>
+  </button>
+  <button type="button" onclick="Replay.nextSegment()">
+    <svg viewBox="0 0 24 24">[[ path mdi/skip-next ]]</svg>
+  </button>
+</div>
