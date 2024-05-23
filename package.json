@@ -1,7 +1,6 @@
 {
   "name": "momentum-frontpage",
   "private": true,
-  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -11,20 +10,17 @@
     "format:check": "prettier --check **/*.{js,ts,scss,css,md}",
     "prepare": "husky install"
   },
-  "dependencies": {
-    "@mdi/svg": "7.4.47",
-    "simple-icons": "11.14.0",
-    "normalize.css": "8.0.1"
-  },
   "devDependencies": {
+    "@mdi/js": "7.4.47",
     "husky": "9.0.11",
     "lint-staged": "15.2.2",
     "prettier": "3.2.5",
+    "simple-icons": "11.14.0",
     "vite": "5.2.11"
   },
   "lint-staged": {
     "**/*.{js,html,css,md}": [
       "prettier --write"
     ]
-  },
+  }
 }
