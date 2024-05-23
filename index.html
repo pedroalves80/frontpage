@@ -68,7 +68,72 @@
         </section>
       </div>
 
+      <div class="section-wrapper">
+        <div class="background"></div>
+        <div class="background-overlay"></div>
+        <section id="Features">
+          <div class="header">
+            <h1>Features</h1>
+          </div>
+          <div>
+            <div class="leaderboards">
+              <div class="desc">
+                <h1>Leaderboards, replays and analytics</h1>
+                <p>All runs submitted are placed on a global leaderboard, including a replay that can be watched by anyone.</p>
+                <p>Our game UI and website provide detailed analytics for every run, allowing you to track your improvement and compare yourself with other players.</p>
+              </div>
+              <div id="Replay" class="ui-chunk">[[ inject partials/replay ]]</div>
+              <div class="leaderboard-wrapper">
+                <div id="Leaderboard" class="ui-chunk">[[ inject partials/leaderboards ]]</div>
+              </div>
+              <div id="Graph" class="ui-chunk">[[ inject partials/graph ]]</div>
+            </div>
+            <div class="map-selector">
+              <h1>In-game map selector</h1>
+              <p>
+                Maps can be downloaded and played instantly in-game, with advanced filtering and HD screenshots to help you find new ones easily. No more players !rtv-ing you off
+                the map you wanted to play, it's always up to you.
+              </p>
+              <p>Maps are submitted and reviewed by the community, including ports of existing maps from your favorite gamemodes!</p>
+              <div id="MapSelector" class="ui-chunk">[[ inject partials/map-selector ]]</div>
+            </div>
+          </div>
+          <div>
+            <div class="levels">
+              <div class="desc">
+                <h1>Level up!</h1>
+                <p>Momentum is heavily geared towards player progression and rewards you for all runs you submit.</p>
+                <p>
+                  Submitting runs earn you <b>experience points</b>, which are public on your profile, as well as <b>rank points</b> for that gamemode, which contribute to your
+                  overall gamemode rank.
+                </p>
+              </div>
+              <div id="Levels" class="ui-chunk">[[ inject partials/levels ]]</div>
+            </div>
+            <div class="multiplayer">
+              <div class="desc">
+                <h1>0 ping multiplayer</h1>
+                <p>
+                  Our multiplayer uses <a href="https://partner.steamgames.com/doc/features/multiplayer/matchmaking">Steam lobbies</a> to establish direct connections between
+                  users.
+                </p>
+                <p>
+                  Whilst players aren't kept perfectly in sync with one-another (so no combat surf/trikz/etc...), it performs well for spectating and observing players on the map.
+                </p>
+                <p>
+                  The upside is that anyone can host a lobby, completely for free, and have no movement delay unless they're spectating another player, and can be in a lobby with
+                  someone whilst on different maps.
+                </p>
+              </div>
+              <div class="lobby-wrapper">
+                <div id="Lobby" class="ui-chunk">[[ inject partials/lobby ]]</div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
     </main>
+
     <footer>
       <div class="socialMediaLogos">
         <div>
