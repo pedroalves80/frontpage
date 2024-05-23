@@ -8,6 +8,7 @@
 @import '../../styling/colors/colors-css-vars.css';
 
 @import 'ui-chunks.css';
+
 :root {
   --font-display: 'Bebas Neue Momentum', sans-serif;
 }
@@ -27,7 +28,8 @@ body {
 
 header {
   width: 100%;
-  height: 768px;
+  height: calc(min(100vh, 56rem));
+  /*height: 100vh;*/
   display: grid;
   place-items: center;
   position: relative;
@@ -36,10 +38,22 @@ header {
   background-image: url('/images/BGLight.webp');
   background-size: cover;
 
+  > video {
+    position: absolute;
+    background-size: cover;
+    width: 100%;
+    z-index: 0;
+    object-fit: cover;
+    min-width: 100vw;
+  }
+
   .hero {
+    z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 4rem; /* Weird margin but handles resizing best */
+    width: 100%;
 
     .logo {
       width: 48rem;
@@ -60,47 +74,53 @@ header {
       paint-order: stroke fill;
     }
 
+    .steam {
+      margin-top: 2rem;
+      width: 52rem;
+    }
+
     .buttons {
       margin-top: 2rem;
       display: flex;
       gap: 1rem;
 
       a {
-        padding: 0.25rem 1.5rem;
+        padding: 0.5rem 1.25rem;
         position: relative;
 
         font-family: var(--font-display);
         font-weight: 700;
-        font-size: 2.675rem;
+        font-size: 2.375rem;
 
         border: 1px solid rgba(255 255 255 / 0.05);
         border-radius: 0.25rem;
         background-origin: border-box !important;
-        backdrop-filter: blur(4px);
+        backdrop-filter: blur(8px);
         box-shadow:
-          0 2px 12px rgb(0 0 0 / 0.4),
-          0 1px 4px rgb(0 0 0 / 0.3);
-        text-shadow: 0 3px 4px rgba(0 0 0 / 0.325);
+          0 1px 1px rgb(0 0 0 / 0.5),
+          0 4px 12px rgb(0 0 0 / 0.5);
 
         transition-property: box-shadow, border;
         transition-duration: 0.1s;
         transition-timing-function: ease-in-out;
 
-        /* Non-standard colors because they look good and these buttons are special! */
-        &.play-now {
-          background: linear-gradient(
-            45deg,
-            rgba(0 140 255 / 0.6),
-            rgba(20 173 255 / 0.6)
-          );
+        > span {
+          background: white;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          filter: drop-shadow(0 1px 2px rgba(0 0 0 / 0.25));
         }
 
         &.dashboard {
           background: linear-gradient(
-            135deg,
-            rgba(255 0 67 / 0.6),
-            rgba(255 0 85 / 0.6)
+            150deg,
+            rgb(181 101 243 / 0.9),
+            rgb(255 61 73 / 0.9)
           );
+        }
+
+        &.discord {
+          background: rgb(88 101 242 / 0.9);
         }
 
         &::after {
@@ -148,16 +168,18 @@ main {
       margin: 0 auto;
       padding: 0 1rem;
       @media screen {
-        max-width: 1280px;
+        max-width: 1400px;
       }
     }
 
     &:nth-child(1) {
       position: relative;
       border-top: 1px solid rgb(255 255 255 / 0.2);
+      border-bottom: 1px solid rgb(0 0 0 / 0.5);
       background: linear-gradient(135deg, #252530, #14151e);
 
-      &::after {
+      &::after,
+      &::before {
         content: '';
         position: absolute;
         height: 4rem;
@@ -265,7 +287,7 @@ section#WhatIsMomentum {
   }
 
   > iframe {
-    flex: 0 0 40%;
+    flex: 0 0 33%;
     aspect-ratio: 16 / 9;
     height: fit-content;
   }
@@ -285,7 +307,7 @@ section#Gamemodes {
     background: linear-gradient(175deg, #ffffff, #e0e0e0);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 8px rgb(0 0 0 / 0.75));
+    filter: drop-shadow(0 0 8px rgb(0 0 0 / 0.5));
   }
 
   .selection {
@@ -314,7 +336,7 @@ section#Gamemodes {
         content: '';
         bottom: 0;
         left: 0;
-        height: 2px;
+        height: 1px;
         width: 100%;
         background-color: rgb(255 255 255 /0.5);
       }
@@ -350,10 +372,6 @@ section#Gamemodes {
         > h1 {
           opacity: 0.9;
         }
-
-        > #TODO {
-          background-color: rgb(255 255 255 / 0.75);
-        }
       }
 
       &.selected {
@@ -376,7 +394,7 @@ section#Gamemodes {
       left: 0;
       display: block;
       width: 0; /* Controlled by JS */
-      height: 2px;
+      height: 1px;
       z-index: 1000;
       background: rgb(255 255 255 / 1);
       box-shadow: 0 0 4px rgb(0 0 0 / 0.25);
@@ -391,7 +409,7 @@ section#Gamemodes {
         display: block;
         height: 100%;
         width: 0;
-        background-color: #1896d3;
+        background-color: #41bcff;
         transition-property: width;
         transition-timing-function: linear;
         /* Controlled by JS */
@@ -404,7 +422,7 @@ section#Gamemodes {
     &:after {
       content: '';
       display: block;
-      height: 2px;
+      height: 1px;
       margin-top: auto;
       flex-grow: 1;
     }
@@ -707,6 +725,26 @@ h5,
 h6 {
   font-family: var(--font-display);
   margin: 0;
+  font-weight: 400;
+}
+
+button {
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+p > a {
+  color: rgb(var(--blue-200));
+  transition-property: color, filter;
+  transition-timing-function: ease-out;
+  transition-duration: 0.15s;
+
+  &:hover {
+    color: rgb(var(--blue-300));
+    filter: drop-shadow(0 1px 3px rgb(var(--blue-400)));
+  }
+  text-decoration: inherit;
 }
 
 a {
@@ -715,5 +753,5 @@ a {
 }
 
 iframe {
-  border: 0;
+  border: none;
 }

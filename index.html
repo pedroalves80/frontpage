@@ -1,22 +1,27 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
-    <link rel="stylesheet" href="style.css" />
+    <title>Momentum Mod</title>
+    <link rel="stylesheet" href="src/css/main.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!--  TODO: What the fuck  -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet" />
   </head>
 
   <body>
     <header>
+      <video src="src/assets/videos/MomentumLight.webm" autoplay muted></video>
       <div class="hero">
-        <img id="Logo" class="logo" src="/images/mom_titlecard.svg" alt="Momentum Mod's Titlecard Logo" />
+        <img id="Logo" class="logo" src="src/assets/images/mom_titlecard.svg" alt="Momentum Mod's Titlecard Logo" />
         <!-- TODO: CHANGE TAGLINE MAYBE? -->
-        <h2 class="subheading" id="Subheading">TODO: PROPER TAGLINE!</h2>
+        <h2 class="subheading" id="Subheading"></h2>
         <div class="buttons">
-          <a class="play-now" target="_blank" href="https://store.steampowered.com/app/669270/Momentum_Mod/">Play Now</a>
-          <a class="dashboard" target="_blank" href="https://momentum-mod.org/dashboard">Dashboard</a>
+          <!--          <a class="play-now" target="_blank" href="https://store.steampowered.com/app/669270/Momentum_Mod/">Play Now</a>-->
+          <a class="dashboard" target="_blank" href="https://momentum-mod.org/dashboard"><span>Dashboard</span></a>
+          <a class="discord" target="_blank" href="https://discord.gg/momentummod"><span>Discord</span></a>
         </div>
+        <iframe class="steam" src="https://store.steampowered.com/widget/669270/" height="190"></iframe>
       </div>
     </header>
 
@@ -35,12 +40,7 @@
               EEEEEEEEEEEEEEEEEEEEEeeEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEee..
             </p>
           </div>
-          <iframe
-            src="https://www.youtube-nocookie.com/embed/Cep1KZKznZo?si=owasrkLY6TWAC4_F&amp;controls=0"
-            title="YouTube Video Player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-          ></iframe>
+          <iframe src="https://www.youtube-nocookie.com/embed/Cep1KZKznZo?si=owasrkLY6TWAC4_F" title="YouTube Video Player" allowfullscreen></iframe>
         </section>
 
         <section id="Gamemodes">
@@ -195,5 +195,8 @@
         </script>
       </p>
     </footer>
+
+    <script type="module" src="src/js/ui-chunks.ts"></script>
+    <script type="module" src="src/js/gamemodes.ts"></script>
   </body>
 </html>
