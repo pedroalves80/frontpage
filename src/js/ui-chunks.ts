@@ -45,6 +45,7 @@ export class MapSelector {
   static fakeDownload(rowIdx: number): void {
     const button = this.getRow(rowIdx).querySelector('& > .download');
     const duration = Math.random() * 2 + 0.5;
+    if (button.classList.contains('playable')) return;
     button.classList.add('downloading');
     button.querySelector<HTMLSpanElement>('& > span').style.transitionDuration =
       `${duration}s`;

@@ -1,6 +1,3 @@
-const AUTO_CHANGE_TIME = 20; // seconds
-const MANUAL_CHANGE_TIME = 60;
-
 const Gamemodes: Gamemode[] = [
   {
     id: 'surf',
@@ -9,7 +6,8 @@ const Gamemodes: Gamemode[] = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
       'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-    ]
+    ],
+    videoDuration: 27.0
   },
   {
     id: 'bhop',
@@ -18,7 +16,8 @@ const Gamemodes: Gamemode[] = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
       'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-    ]
+    ],
+    videoDuration: 23.534
   },
   {
     id: 'climb',
@@ -27,7 +26,8 @@ const Gamemodes: Gamemode[] = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
       'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-    ]
+    ],
+    videoDuration: 30.8
   },
   {
     id: 'rj',
@@ -37,7 +37,8 @@ const Gamemodes: Gamemode[] = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
       'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-    ]
+    ],
+    videoDuration: 22.25
   },
   {
     id: 'sj',
@@ -46,7 +47,8 @@ const Gamemodes: Gamemode[] = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
       'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-    ]
+    ],
+    videoDuration: 22.55
   },
   {
     id: 'defrag',
@@ -55,7 +57,8 @@ const Gamemodes: Gamemode[] = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
       'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-    ]
+    ],
+    videoDuration: 34.854
   },
   {
     id: 'ahop',
@@ -66,7 +69,8 @@ const Gamemodes: Gamemode[] = [
       'In Ahop, speed is practically free; the challenge of Ahop is using multiple techniques ' +
         ' such as back/side/forward-hopping, sprint/duck/walking, and circlestrafing to maintain control and accurately navigate maps.',
       'Unlike other gamemodes, Ahop has never been played on dedicated servers, and is instead best known from Half-Life 2 and Portal speedrunnning.'
-    ]
+    ],
+    videoDuration: 31.684
   },
   {
     id: 'conc',
@@ -77,7 +81,8 @@ const Gamemodes: Gamemode[] = [
         'skilled concing requires awareness of every active conc and planning your next step at least 4 seconds in the future.',
       'Whilst TFC has historically had a very small playerbase, the conc community has remained active ' +
         'for multiple decades and has played an active role in shaping the mode in Momentum.'
-    ]
+    ],
+    videoDuration: 28.35
   }
 ];
 
@@ -150,27 +155,30 @@ function selectMode(gamemode: Gamemode, autoswitch: boolean) {
 
   if (timerHandle) {
     clearTimeout(timerHandle);
+    timerHandle = undefined;
   }
 
-  const duration = autoswitch ? AUTO_CHANGE_TIME : MANUAL_CHANGE_TIME;
-  timerHandle = setTimeout(
-    () =>
-      selectMode(
-        Gamemodes[(Gamemodes.indexOf(selected) + 1) % Gamemodes.length],
-        true
-      ),
-    duration * 1000
-  );
   timeBar.style.width = `${parseFloat(window.getComputedStyle(gamemode.button).width.replace('px', ''))}px`;
   timeBar.style.left = `${gamemode.button.offsetLeft}px`;
   timeBarProgress.style.width = '0%';
   timeBarProgress.style.transitionDuration = '0s';
 
-  setTimeout(() => {
-    timeBar.style.transitionDuration = '0.5s';
-    timeBarProgress.style.width = '100%';
-    timeBarProgress.style.transitionDuration = `${duration}s`;
-  });
+  if (autoswitch) {
+    const duration = gamemode.videoDuration;
+    timerHandle = setTimeout(
+      () =>
+        selectMode(
+          Gamemodes[(Gamemodes.indexOf(selected) + 1) % Gamemodes.length],
+          true
+        ),
+      duration * 1000
+    );
+    setTimeout(() => {
+      timeBar.style.transitionDuration = '0.5s';
+      timeBarProgress.style.width = '100%';
+      timeBarProgress.style.transitionDuration = `${duration}s`;
+    });
+  }
 
   gamemode.button.classList.add('selected');
   gamemode.section.classList.add('selected');
@@ -185,6 +193,10 @@ type Gamemode = {
   id: string;
   name: string;
   description: string[];
+  // hate having to hardcode this but a nightmare getting programmatically since
+  // video isn't loaded immediately
+  videoDuration: number;
   button?: HTMLButtonElement;
   section?: HTMLDivElement;
+  video?: HTMLVideoElement;
 };
