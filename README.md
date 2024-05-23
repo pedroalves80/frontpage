@@ -5,15 +5,17 @@
 
 # frontpage
 
-This is a tiny repo for Momentum's frontpage site (momentum-mod.org).
+Tiny repo for Momentum's frontpage site (momentum-mod.org) and branding
+guidelines (momentum-mod.org/branding).
 
-For now we're entirely vanilla, using Vite for auto reloading and other goodies,
-but should work fine without.
-
-We use [Iconify](https://iconify.design/)'s
-[web component](https://iconify.design/docs/iconify-icon/) for providing icons.
+Built using vanilla HTML and CSS, with Vite for auto reloading, TypeScript
+compilation and various other goodies. There's a couple of custom plugins for
+inlining HTML/SVGs in `/plugins`.
 
 ## Development
+
+Use `git submodule update --remote` to ensure you have the `styling` submodule
+fetched.
 
 With Node installed, run `npm install`.
 
@@ -23,5 +25,3 @@ Vite spits out and all should work.
 For auto-formatting, run `npm run format`. I recommend the
 [Prettier extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 to VSCode.
-
-# TODO: SVGO
