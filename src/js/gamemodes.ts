@@ -86,39 +86,40 @@ let timerHandle: ReturnType<typeof setTimeout> | undefined;
 let timeBar: HTMLDivElement;
 let timeBarProgress: HTMLSpanElement;
 
-export function init() {
-  timeBar = document.querySelector('#TimeBar') as HTMLDivElement;
-  timeBarProgress = document.querySelector(
-    '#TimeBar > span'
-  ) as HTMLSpanElement;
-  const selection = document.querySelector('#GamemodeSelection');
-  const selectionTemplate = document.querySelector(
-    '#GamemodeSelectionTemplate'
-  ) as HTMLTemplateElement;
-  const sections = document.querySelector('#GamemodeContainer');
-  const sectionTemplate = document.querySelector(
-    '#GamemodeTemplate'
-  ) as HTMLTemplateElement;
+//prettier-ignore
+function init() {
+  timeBar                 = document.querySelector('#TimeBar')                   as HTMLDivElement;
+  timeBarProgress         = document.querySelector('#TimeBar > span')            as HTMLSpanElement;
+  const selection         = document.querySelector('#GamemodeSelection');
+  const selectionTemplate = document.querySelector('#GamemodeSelectionTemplate') as HTMLTemplateElement;
+  const sections          = document.querySelector('#GamemodeContainer');
+  const sectionTemplate   = document.querySelector('#GamemodeTemplate')          as HTMLTemplateElement;
 
+  // Horrible approach to serving lower-quality vid to slow connections.
+  // I want to be able to use a regular <video> instead of faffing with streaming players,
+  // which would be the sane way of dynamically serving different video qualities.
+  const diff = Date.now() - (window as any).loadStartTime;
+  const useHighQuality = diff < 500;
+  
   for (const gamemode of Gamemodes) {
-    const buttonNode = selectionTemplate.content.cloneNode(
-      true
-    ) as DocumentFragment;
+    const buttonNode = selectionTemplate.content.cloneNode(true) as DocumentFragment;
+    
     buttonNode.querySelector('h1').textContent = gamemode.name;
-    buttonNode.querySelector('img').src =
-      `/images/gamemodes/${gamemode.id}.svg`;
+    buttonNode.querySelector('img').src = `assets/images/gamemodes/${gamemode.id}.svg`;
+    
     const button = buttonNode.children[0] as HTMLButtonElement;
+    
     button.id = `${gamemode.id}Button`;
     button.addEventListener('focus', () => selectMode(gamemode, false));
+    
     selection.appendChild(buttonNode);
     gamemode.button = button;
 
-    const sectionNode = sectionTemplate.content.cloneNode(
-      true
-    ) as DocumentFragment;
+    const sectionNode = sectionTemplate.content.cloneNode(true) as DocumentFragment;
+    
     const video = sectionNode.querySelector('video');
-    video.src = `/videos/gamemodes/${gamemode.id}_loop.webm`;
-    video.poster = `/images/gamemodes/${gamemode.id}_thumbnail.webp`;
+    video.src = `/assets/videos/gamemodes/${gamemode.id}_vp9_${useHighQuality ? 'high' : 'low'}.webm`;
+    video.poster = `/assets/images/gamemodes/${gamemode.id}_thumbnail.webp`;
 
     const details = sectionNode.querySelector('#GamemodeDetails');
     const heading = document.createElement('h1');
@@ -136,7 +137,7 @@ export function init() {
     gamemode.section = section;
   }
 
-  // Run on next EL cycle so progress bar behaves
+  // Run on next EL cycle so progress bar and videos behaves
   setTimeout(() => selectMode(Gamemodes[0], true));
 }
 
@@ -187,58 +188,3 @@ type Gamemode = {
   button?: HTMLButtonElement;
   section?: HTMLDivElement;
 };
-
-const a = [
-  'A Christian',
-  'An Asexual',
-  'A Mesopotamian',
-  'A Tropical',
-  'A Nautical',
-  'A Swedish',
-  'A Humanist',
-  'An Uninspiring',
-  'A Mild-mannered',
-  'An Imaginary',
-  'An Unapologetic',
-  'A Flat-earther'
-];
-const b = [
-  'turn-based',
-  'holographic',
-  'counter-cultural',
-  'redditlike',
-  'onion-flavoured',
-  'strategy-based',
-  'cocaine-influenced',
-  'katamari damacy inspired',
-  'isometric',
-  '4D'
-];
-const c = [
-  'rogue-like',
-  'role-playing game',
-  'FPS',
-  'autoscroller',
-  'guitar hero clone',
-  'strategy game',
-  'slugfest',
-  'gardening simulator',
-  'pokemon clone',
-  'portal 2 mod',
-  'minecraft clone'
-];
-const d = [
-  'built in Godot',
-  'built in Unreal 3',
-  'built in Game Maker 6',
-  'built using whatever Nintendo uses',
-  'currently looking for VC funding',
-  'previously banned in Australia',
-  'inspired by the works of Orson Welles'
-];
-const pick = (a) => a[Math.floor(Math.random() * a.length)];
-addEventListener('DOMContentLoaded', () => {
-  document.querySelector('#Subheading').textContent = [a, b, c, d]
-    .map(pick)
-    .join(' ');
-});
