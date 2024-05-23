@@ -32,7 +32,7 @@ header {
   position: relative;
 
   /* TODO https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images */
-  background-image: url('/images/BGLight.jpg');
+  background-image: url('/images/BGLight.webp');
   background-size: cover;
 
   .hero {
