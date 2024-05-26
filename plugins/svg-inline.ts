@@ -1,7 +1,7 @@
 import { Plugin } from 'vite';
 import * as mdi from '@mdi/js';
 import * as si from 'simple-icons';
-import * as mom from '../src/assets/images/paths';
+import * as mom from '../src/js/paths';
 
 const icons = {
   mdi: mdi,

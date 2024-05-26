@@ -110,7 +110,7 @@ function init() {
     const buttonNode = selectionTemplate.content.cloneNode(true) as DocumentFragment;
     
     buttonNode.querySelector('h1').textContent = gamemode.name;
-    buttonNode.querySelector('img').src = `assets/images/gamemodes/${gamemode.id}.svg`;
+    buttonNode.querySelector('img').src = `/assets/images/gamemodes/${gamemode.id}.svg`;
     buttonNode.querySelector('img').alt = gamemode.name;
     
     const button = buttonNode.children[0] as HTMLButtonElement;
