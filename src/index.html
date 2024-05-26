@@ -61,8 +61,8 @@
               <span></span>
             </div>
             <template id="GamemodeSelectionTemplate">
-              <button type="button">
-                <img src="" />
+              <button type="button" aria-label="Select gamemode">
+                <img src="" loading="lazy" />
                 <h1></h1>
               </button>
             </template>
@@ -97,9 +97,9 @@
                 </p>
               </div>
               <div class="scroll-wrapper">
-                <div id="Leaderboard" class="ui-chunk">[[ inject partials/leaderboards ]]</div>
+                <div id="Leaderboard" class="ui-chunk">[[ inject partials/ui-chunks/leaderboards ]]</div>
               </div>
-              <div id="Replay" class="ui-chunk">[[ inject partials/replay ]]</div>
+              <div id="Replay" class="ui-chunk">[[ inject partials/ui-chunks/replay ]]</div>
             </div>
             <div class="bento-item map-selector">
               <div class="details">
@@ -110,12 +110,12 @@
                 </p>
               </div>
               <div class="scroll-wrapper">
-                <div id="MapSelector" class="ui-chunk">[[ inject partials/map-selector ]]</div>
+                <div id="MapSelector" class="ui-chunk">[[ inject partials/ui-chunks/map-selector ]]</div>
               </div>
             </div>
             <div class="bento-item levels">
-              <div id="Graph">[[ inject partials/graph ]]</div>
-              <div id="Levels" class="ui-chunk">[[ inject partials/levels ]]</div>
+              <div id="Graph">[[ inject partials/ui-chunks/graph ]]</div>
+              <div id="Levels" class="ui-chunk">[[ inject partials/ui-chunks/levels ]]</div>
               <div class="details">
                 <h1>Level up!</h1>
                 <p>
@@ -124,7 +124,7 @@
               </div>
             </div>
             <div class="bento-item multiplayer">
-              <div id="Lobby" class="ui-chunk">[[ inject partials/lobby ]]</div>
+              <div id="Lobby" class="ui-chunk">[[ inject partials/ui-chunks/lobby ]]</div>
               <div class="details">
                 <h1>Lag-Free Multiplayer</h1>
                 <p>
@@ -198,7 +198,7 @@
         <span id="opyright">
           <script>
             document
-              .getElementById('copyright')
+              .getElementById('Copyright')
               .appendChild(document.createTextNode(new Date().getFullYear().toString()));
           </script>
         </span>

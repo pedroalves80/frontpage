@@ -16,26 +16,26 @@
 
 <div class="progress">
   <label for="Progress" style="display: none">Progress</label>
-  <input type="range" id="Progress" />
+  <input type="range" id="Progress" aria-label="Progress" />
   <!--  Populated by JS-->
   <div id="Segments" class="segments"></div>
 </div>
 
 <div class="buttons">
-  <button type="button" onclick="Replay.previousSegment()">
+  <button type="button" onclick="Replay.previousSegment()" aria-label="Go to previous segment">
     <svg viewBox="0 0 24 24">[[ path mdi/skip-previous ]]</svg>
   </button>
-  <button type="button" onclick="Replay.previousTick()">
+  <button type="button" onclick="Replay.previousTick()" aria-label="Go to previous tick">
     <svg viewBox="0 0 24 24">[[ path mdi/step-backward ]]</svg>
   </button>
-  <button type="button" class="toggle" onclick="Replay.togglePlay()">
+  <button type="button" class="toggle" onclick="Replay.togglePlay()" aria-label="Play/pause replay">
     <svg viewBox="0 0 24 24" class="pause">[[ path mdi/pause ]]</svg>
     <svg viewBox="0 0 24 24" class="play">[[ path mdi/play ]]</svg>
   </button>
-  <button type="button" onclick="Replay.nextTick()">
+  <button type="button" onclick="Replay.nextTick()" aria-label="Go to next tick">
     <svg viewBox="0 0 24 24">[[ path mdi/step-forward ]]</svg>
   </button>
-  <button type="button" onclick="Replay.nextSegment()">
+  <button type="button" onclick="Replay.nextSegment()" aria-label="Go to next segment">
     <svg viewBox="0 0 24 24">[[ path mdi/skip-next ]]</svg>
   </button>
 </div>
