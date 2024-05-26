@@ -21,15 +21,14 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 
-  p {
-    margin: 0;
+  @media (max-width: 1024px) {
+    max-width: 100%;
   }
 }
 
 header {
   width: 100%;
   height: calc(min(100vh, 56rem));
-  /*height: 100vh;*/
   display: grid;
   place-items: center;
   position: relative;
@@ -38,6 +37,7 @@ header {
   background-image: url('/assets/images/BGLight.webp');
   background-size: cover;
 
+  /* TODO: probably kill */
   > video {
     position: absolute;
     background-size: cover;
@@ -67,10 +67,7 @@ header {
       font-weight: 700;
       font-family: var(--font-display);
 
-      /* TODO: This looks pretty shit, at least on Chromium.
-      Important enough that we should just make this as an SVG, in the exact same fashion
-      as the main logo. Also the copy is shit. */
-      -webkit-text-stroke: 8px rgb(var(--gray-700));
+      -webkit-text-stroke: 9px rgb(var(--gray-700));
       paint-order: stroke fill;
     }
 
@@ -114,7 +111,7 @@ header {
         &.dashboard {
           background: linear-gradient(
             150deg,
-            rgba(158, 31, 255, 0.75),
+            rgba(31, 68, 255, 0.75),
             rgba(255, 32, 44, 0.75)
           );
         }
@@ -158,6 +155,32 @@ header {
     background: linear-gradient(transparent, rgb(24 105 211 / 0.5));
     border-bottom: 1px solid rgb(33, 33, 33);
   }
+
+  @media (max-width: 1024px) {
+    height: 100vh;
+
+    .hero {
+      .logo {
+        width: 100%;
+      }
+
+      .subheading {
+        text-align: center;
+        font-size: 3rem;
+        -webkit-text-stroke: 12px rgb(var(--gray-700));
+      }
+      
+      .buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+      
+      .steam {
+        margin-top: 2rem;
+        width: 75%;
+      }
+    }
+  }
 }
 
 main {
@@ -166,9 +189,10 @@ main {
 
     section {
       margin: 0 auto;
-      padding: 0 1rem;
-      @media screen {
-        max-width: 80rem; /* 1280px */
+      max-width: 80rem; /* 1280px */
+
+      @media (max-width: 1024px) {
+        padding-inline: 2rem;
       }
     }
 
@@ -309,11 +333,13 @@ section#WhatIsMomentum {
   margin-top: 3.5rem;
 
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 3rem;
   align-items: center;
 
   > .description {
-    flex: 0 1 60%;
+    flex: 1 1 60%;
 
     h1 {
       margin-top: -0.5rem;
@@ -336,9 +362,13 @@ section#WhatIsMomentum {
   }
 
   > iframe {
-    flex: 0 0 33%;
+    flex: 1 0 33%;
     aspect-ratio: 16 / 9;
     height: fit-content;
+  }
+
+  @media (max-width: 1024px) {
+    /*flex-direction: column;*/
   }
 }
 
@@ -493,24 +523,23 @@ section#Gamemodes {
   .gamemodes {
     margin-top: 1.5rem;
     margin-bottom: 1rem;
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
 
     .gamemode {
-      grid-column: 1;
-      grid-row: 1;
-
       gap: 2rem;
       display: none;
 
+      &.selected {
+        display: flex;
+      }
+      
       > video {
-        width: 540px;
+        flex: 1 0 auto;
+        max-width: 540px;
         aspect-ratio: 16 / 9;
         box-shadow: 0 0 0.75rem rgb(0 0 0 / 0.275);
         border-radius: 0.25rem;
-      }
-
-      &.selected {
-        display: flex;
       }
 
       > .details {
@@ -610,6 +639,12 @@ section#Features {
     gap: 0.75rem;
     width: 100%;
 
+    @media (max-width: 1024px) {
+      * {
+        grid-column: 1 / -1 !important;
+      }
+    }
+
     .scroll-wrapper {
       position: relative;
       overflow: hidden;
@@ -692,11 +727,14 @@ section#Features {
       grid-row: 1 / span 2;
       margin-block: auto;
     }
+
+    @media (max-width: 1024px) {
+      /* TODO*/
+    }
   }
 
   .map-selector {
-    grid-column: 3 / -1;
-
+    grid-column-end: -1;
     display: grid;
     grid-template-rows: 1fr auto;
 
@@ -810,17 +848,21 @@ button {
   border: none;
 }
 
-p > a {
-  color: rgb(var(--blue-200));
-  transition-property: color, filter;
-  transition-timing-function: ease-out;
-  transition-duration: 0.1s;
+p {
+  margin: 0;
 
-  &:hover {
-    color: rgb(var(--blue-300));
+  > a {
+    color: rgb(var(--blue-200));
+    transition-property: color, filter;
+    transition-timing-function: ease-out;
+    transition-duration: 0.1s;
+
+    &:hover {
+      color: rgb(var(--blue-300));
+    }
+
+    text-decoration: inherit;
   }
-
-  text-decoration: inherit;
 }
 
 a {
