@@ -17,10 +17,11 @@ const icons = {
   mom: mom
 };
 
-// Simple SVG inliner script.
+// SVG path inliner plugin, intended for very simple SVGs.
 // Example:
-// [[ icon mdi/account ]]
-// [[ icon si/steam ]]
+// <svg viewBox="0 0 24 24"> [[ path mom/account ]] </svg>
+// <svg viewBox="0 0 24 24"> [[ path si/steam ]] </svg>
+// <svg viewBox="0 0 24 24"> [[ path mdi/log ]] </svg>
 export default function (): Plugin {
   const tagMatcher = /\[\[ path (.+) ]]/gi;
 
