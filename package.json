@@ -8,7 +8,8 @@
     "preview": "vite preview",
     "format": "prettier --write **/*.{js,html,css,md}",
     "format:check": "prettier --check **/*.{js,ts,scss,css,md}",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "ts:check": "tsc --noEmit"
   },
   "devDependencies": {
     "@mdi/js": "7.4.47",
@@ -17,6 +18,7 @@
     "modern-normalize": "2.0.0",
     "prettier": "3.2.5",
     "simple-icons": "11.14.0",
+    "typescript": "5.4.5",
     "vite": "5.2.11"
   },
   "lint-staged": {
