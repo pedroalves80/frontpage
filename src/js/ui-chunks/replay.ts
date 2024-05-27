@@ -24,7 +24,7 @@ export class Replay {
   static totalTicks: number;
   static totalTimeString: string;
 
-  private static _time: number = 81.3;
+  private static _time: number;
 
   static get time(): number { return this._time; } //prettier-ignore
   static set time(t: number) {
@@ -80,7 +80,7 @@ export class Replay {
       this.time = (+this.rangeEl.value / this.TickRate) * this.totalTime;
     });
 
-    this.updateProgress();
+    this.time = 81.3;
   }
 
   static updateProgress() {
