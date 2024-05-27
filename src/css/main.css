@@ -809,7 +809,11 @@ footer {
     top: 0;
     left: 0;
     content: '';
-    background: radial-gradient(200% 100% at top center, rgb(0 0 0 / 0.3), transparent);
+    background: radial-gradient(
+      200% 100% at top center,
+      rgb(0 0 0 / 0.3),
+      transparent
+    );
   }
 
   > .links {
