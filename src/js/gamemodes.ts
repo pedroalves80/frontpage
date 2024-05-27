@@ -1,3 +1,15 @@
+type Gamemode = {
+  id: string;
+  name: string;
+  description: string[];
+  // hate having to hardcode this but a nightmare getting programmatically since
+  // video isn't loaded immediately
+  videoDuration: number;
+  button?: HTMLButtonElement;
+  section?: HTMLDivElement;
+  video?: HTMLVideoElement;
+};
+
 const Gamemodes: Gamemode[] = [
   {
     id: 'surf',
@@ -111,7 +123,6 @@ function init() {
     
     buttonNode.querySelector('h1').textContent = gamemode.name;
     buttonNode.querySelector('img').src = `/assets/images/gamemodes/${gamemode.id}.svg`;
-    buttonNode.querySelector('img').alt = gamemode.name;
     
     const button = buttonNode.children[0] as HTMLButtonElement;
     
@@ -189,15 +200,3 @@ function selectMode(gamemode: Gamemode, autoswitch: boolean) {
 }
 
 init();
-
-type Gamemode = {
-  id: string;
-  name: string;
-  description: string[];
-  // hate having to hardcode this but a nightmare getting programmatically since
-  // video isn't loaded immediately
-  videoDuration: number;
-  button?: HTMLButtonElement;
-  section?: HTMLDivElement;
-  video?: HTMLVideoElement;
-};
