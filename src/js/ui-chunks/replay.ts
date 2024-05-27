@@ -1,6 +1,7 @@
 // Absolutely ridiculous overkill but whatever it was FUN
 export class Replay {
-  static readonly segmentTimes = [
+  static readonly TickRate = 100;
+  static readonly SegmentTimes = [
     '0:36.14',
     '1:09.99',
     '1:43.41',
@@ -8,18 +9,30 @@ export class Replay {
     '2:16.72'
   ];
 
-  static range: HTMLInputElement;
-  static time: HTMLHeadingElement;
-  static ticks: HTMLHeadingElement;
+  static rangeEl: HTMLInputElement;
+  static timeEl: HTMLHeadingElement;
+  static ticksEl: HTMLHeadingElement;
+  static playButtonEl: HTMLButtonElement;
   static segments: Array<{
     div: HTMLDivElement;
     span: HTMLSpanElement;
     startTime: number;
     endTime: number;
   }> = [];
+
   static totalTime: number;
   static totalTicks: number;
   static totalTimeString: string;
+
+  private static _time: number = 81.3;
+
+  static get time(): number { return this._time; } //prettier-ignore
+  static set time(t: number) {
+    this._time = t;
+    if (!this.rangeEl) return;
+    this.rangeEl.value = ((t * 100) / this.totalTime).toPrecision(10) ?? '0';
+    this.updateProgress();
+  }
 
   static {
     addEventListener('DOMContentLoaded', () => this.init());
@@ -31,15 +44,15 @@ export class Replay {
       return m * 60 + s;
     };
 
-    this.totalTimeString = this.segmentTimes.at(-1);
+    this.totalTimeString = this.SegmentTimes.at(-1);
     this.totalTime = parseTime(this.totalTimeString);
-    this.totalTicks = this.totalTime * 100; // 100 tickrate, standard
+    this.totalTicks = this.totalTime * this.TickRate;
 
     const segmentContainer = document.querySelector(
       '#Replay.ui-chunk #Segments'
     );
 
-    const segTimes = this.segmentTimes.map(parseTime);
+    const segTimes = this.SegmentTimes.map(parseTime);
     this.segments = segTimes.map((time, idx) => {
       const div = document.createElement('div');
       const span = document.createElement('span');
@@ -59,28 +72,30 @@ export class Replay {
       };
     });
 
-    this.range = document.querySelector('#Replay.ui-chunk #Progress');
-    this.time = document.querySelector('#Replay.ui-chunk #Time');
-    this.ticks = document.querySelector('#Replay.ui-chunk #Ticks');
-    this.range.addEventListener('input', () => this.updateProgress());
+    this.rangeEl = document.querySelector('#Replay.ui-chunk #Progress');
+    this.timeEl = document.querySelector('#Replay.ui-chunk #Time');
+    this.ticksEl = document.querySelector('#Replay.ui-chunk #Ticks');
+    this.playButtonEl = document.querySelector('#Replay.ui-chunk #PlayButton');
+    this.rangeEl.addEventListener('input', () => {
+      this.time = (+this.rangeEl.value / this.TickRate) * this.totalTime;
+    });
 
     this.updateProgress();
   }
 
   static updateProgress() {
-    const time = this.getCurrentTime();
-    const remainder = time % 60;
-    const s = remainder.toFixed(2);
-    const timeString = `${Math.floor(time / 60)}:${remainder < 10 ? '0' + s : s}`;
-    this.time.textContent = `${timeString} / ${this.totalTimeString}`;
-    this.ticks.textContent = `${Math.floor((time / this.totalTime) * this.totalTicks)} / ${this.totalTicks}`;
+    const remainder = this.time % 60;
+    const s = remainder.toFixed(1);
+    const timeString = `${Math.floor(this.time / 60)}:${remainder < 10 ? '0' + s : s}`;
+    this.timeEl.textContent = `${timeString} / ${this.totalTimeString}`;
+    this.ticksEl.textContent = `${Math.floor((this.time / this.totalTime) * this.totalTicks)} / ${this.totalTicks}`;
 
     for (const { div, span, startTime, endTime } of this.segments) {
-      if (time > endTime) {
+      if (this.time > endTime) {
         span.style.width = '100%';
         div.classList.remove('current');
-      } else if (time > startTime) {
-        span.style.width = `${((time - startTime) / (endTime - startTime)) * 100}%`;
+      } else if (this.time > startTime) {
+        span.style.width = `${((this.time - startTime) / (endTime - startTime)) * 100}%`;
         div.classList.add('current');
       } else {
         span.style.width = '0%';
@@ -89,41 +104,56 @@ export class Replay {
     }
   }
 
-  static togglePlay() {}
-
   static previousSegment() {
-    const time = this.getCurrentTime();
-    this.updateRangeFromTime(
+    this.time =
       this.segments
         .map(({ startTime }) => startTime)
-        .filter((startTime) => startTime < time - 1) // Some weird inaccuracy here (more than fp imprec) so -1
-        .at(-1) ?? 0
-    );
+        .filter((startTime) => startTime < this.time)
+        .at(-1) ?? 0;
   }
 
   static nextSegment() {
-    const time = this.getCurrentTime();
-    this.updateRangeFromTime(
+    this.time =
       this.segments
         .map(({ startTime }) => startTime)
-        .filter((startTime) => time + 1 < startTime)
-        .at(0) ?? 0
-    );
+        .filter((startTime) => this.time < startTime)
+        .at(0) ?? 0;
   }
 
   static previousTick() {
-    const time = this.getCurrentTime();
-    this.updateRangeFromTime(time - 0.5);
+    this.time -= 1 / this.TickRate;
   }
 
-  static nextTick() {}
-
-  private static getCurrentTime() {
-    return (+this.range.value / 100) * this.totalTime;
+  static nextTick() {
+    this.time += 1 / this.TickRate;
   }
 
-  private static updateRangeFromTime(time: number) {
-    this.range.value = ((time * 100) / this.totalTime).toPrecision(10) ?? '0';
-    this.updateProgress();
+  private static playing: boolean = false;
+
+  static togglePlaying() {
+    this.playing = !this.playing;
+    this.playButtonEl.classList.toggle('playing');
+
+    if (this.playing) {
+      this.runAfLoopCycle();
+    }
+  }
+
+  private static runAfLoopCycle() {
+    const before = Date.now();
+    requestAnimationFrame(() => {
+      if (!this.playing) return;
+
+      if (this.time >= this.totalTime) {
+        this.playing = false;
+        return;
+      }
+
+      this.time += (Date.now() - before) / 1000;
+
+      this.runAfLoopCycle();
+    });
   }
 }
+
+Object.assign(window, { Replay });
