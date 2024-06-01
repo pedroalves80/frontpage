@@ -160,11 +160,15 @@ header {
         }
 
         &.dashboard {
-          background: rgba(255, 75, 117, 0.9);
+          background: rgba(255 75 117 / 0.9);
         }
 
         &.discord {
           background: rgb(88 101 242 / 0.9);
+        }
+
+        &.donate {
+          background: rgb(19 150 210 / 0.9);
         }
 
         &::after {
