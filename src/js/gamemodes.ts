@@ -118,7 +118,7 @@ function init() {
   const diff = Date.now() - (window as any).loadStartTime;
   const useHighQuality = diff < 500;
   
-  for (const gamemode of Gamemodes) {
+  for (const [i, gamemode] of Gamemodes.entries()) {
     const buttonNode = selectionTemplate.content.cloneNode(true) as DocumentFragment;
     
     buttonNode.querySelector('h1').textContent = gamemode.name;
@@ -152,10 +152,21 @@ function init() {
     section.id = gamemode.id;
     sections.appendChild(sectionNode);
     gamemode.section = section;
+
+    if (i == 0) {
+      gamemode.button.classList.add('selected');
+      gamemode.section.classList.add('selected');
+    }
   }
 
-  // Run on next EL cycle so progress bar and videos behaves
-  setTimeout(() => selectMode(Gamemodes[0], true));
+  new IntersectionObserver(
+    ([entry], observer) => {
+      if (!entry.isIntersecting) return;
+      selectMode(Gamemodes[0], true);
+      observer.disconnect();
+    },
+    { root: null, rootMargin: '0px', threshold: 0 }
+  ).observe(sections);
 }
 
 function selectMode(gamemode: Gamemode, autoswitch: boolean) {
