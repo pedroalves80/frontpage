@@ -416,7 +416,9 @@ section#WhatIsMomentum {
 
     p {
       color: #eee;
-      line-height: 1.5rem;
+      line-height: 1.625rem;
+      text-wrap: balance;
+
       + p {
         margin-top: 1rem;
       }
