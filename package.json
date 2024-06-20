@@ -16,6 +16,7 @@
     "husky": "9.0.11",
     "lint-staged": "15.2.2",
     "modern-normalize": "2.0.0",
+    "postcss-custom-media": "10.0.6",
     "prettier": "3.2.5",
     "simple-icons": "11.14.0",
     "typescript": "5.4.5",

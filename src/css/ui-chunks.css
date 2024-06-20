@@ -138,6 +138,12 @@
       }
     }
   }
+
+  @media (--medium-viewport) {
+    display: flex;
+    flex-direction: column;
+    height: 12rem;
+  }
 }
 
 #MapSelector.ui-chunk {
@@ -311,6 +317,10 @@
     height: 100%;
     border-radius: 0.25rem;
     border: 1px solid rgb(255 255 255 / 0.1);
+
+    @media (--medium-viewport) {
+      min-height: 10vh;
+    }
 
     > * {
       position: absolute;
@@ -494,6 +504,10 @@
       -webkit-text-fill-color: transparent;
       text-shadow: none;
       filter: drop-shadow(0 1px 1px rgba(10, 40, 0, 0.5));
+    }
+
+    @media (--medium-viewport) {
+      margin-top: 1rem;
     }
   }
 
