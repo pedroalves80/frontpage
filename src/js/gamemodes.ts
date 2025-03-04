@@ -102,6 +102,7 @@ let selected: Gamemode | undefined;
 let timerHandle: ReturnType<typeof setTimeout> | undefined;
 let timeBar: HTMLDivElement;
 let timeBarProgress: HTMLSpanElement;
+let buttonHasBeenClicked = false;
 
 //prettier-ignore
 function init() {
@@ -167,9 +168,15 @@ function init() {
     },
     { root: null, rootMargin: '0px', threshold: 0 }
   ).observe(sections);
+
+  window.addEventListener('resize', () => {
+    if (selected) selectMode(selected, !buttonHasBeenClicked);
+  });
 }
 
 function selectMode(gamemode: Gamemode, autoswitch: boolean) {
+  buttonHasBeenClicked = !autoswitch;
+
   if (selected) {
     selected.button?.classList?.remove('selected');
     selected.section?.classList?.remove('selected');
@@ -181,8 +188,17 @@ function selectMode(gamemode: Gamemode, autoswitch: boolean) {
     timerHandle = undefined;
   }
 
-  timeBar.style.width = `${parseFloat(window.getComputedStyle(gamemode.button).width.replace('px', ''))}px`;
-  timeBar.style.left = `${gamemode.button.offsetLeft}px`;
+  const selection = document.querySelector('#GamemodeSelection');
+  const selectionRect = selection.getBoundingClientRect();
+  const buttonRect = gamemode.button.getBoundingClientRect();
+  const scrollOffset = selection.scrollLeft; // Horizontal scroll position
+  const leftPosition = buttonRect.left - selectionRect.left + scrollOffset;
+
+  timeBar.style.left = `${leftPosition}px`;
+  timeBar.style.width = `${buttonRect.width}px`;
+
+  timeBar.style.left = `${leftPosition}px`;
+  timeBar.style.width = `${buttonRect.width}px`;
   timeBarProgress.style.width = '0%';
   timeBarProgress.style.transitionDuration = '0s';
 
