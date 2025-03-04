@@ -11,6 +11,7 @@
     </script>
 
     <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/lite-yt-embed.css" />
     <link rel="icon" type="image/png" href="/assets/favicon.png" />
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -71,12 +72,13 @@
               Momentum the best platform to learn, improve, and master each of the supported modes.
             </p>
           </div>
-          <iframe
-            src="https://www.youtube-nocookie.com/embed/Cep1KZKznZo?si=owasrkLY6TWAC4_F"
-            title="YouTube Video Player"
-            allowfullscreen
+
+          <lite-youtube
+            videoid="Cep1KZKznZo"
             class="intro-video"
-          ></iframe>
+            playlabel="Play: What is Momentum Mod?"
+            title="What is Momentum Mod?"
+          ></lite-youtube>
         </section>
 
         <section id="Gamemodes">
@@ -236,5 +238,6 @@
 
     <script type="module" src="js/ui-chunks/index.ts"></script>
     <script type="module" src="js/gamemodes.ts"></script>
+    <script type="module" src="js/lite-yt-embed.ts"></script>
   </body>
 </html>

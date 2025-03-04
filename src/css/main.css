@@ -464,7 +464,7 @@ section#WhatIsMomentum {
     }
   }
 
-  > iframe.intro-video {
+  > .intro-video {
     flex: 0 0 35%;
     aspect-ratio: 16 / 9;
     height: fit-content;
