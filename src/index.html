@@ -30,10 +30,17 @@
         <source media="(max-width: 1280px)" srcset="/assets/images/bg-light_1280x720.webp" />
         <source media="(max-width: 1920px)" srcset="/assets/images/bg-light_1920x1080.webp" />
         <source media="(min-width: 1921px)" srcset="/assets/images/bg-light_2560x1440.webp" />
-        <img src="/assets/images/bg-light_1920x1080.webp" alt="" />
+        <img src="/assets/images/bg-light_1920x1080.webp" alt="" fetchpriority="high" />
       </picture>
       <div class="hero">
-        <img id="Logo" class="logo" src="/assets/images/logo.svg" alt="Momentum Mod's Titlecard Logo" />
+        <img
+          id="Logo"
+          class="logo"
+          fetchpriority="high"
+          src="/assets/images/logo.svg"
+          alt="Momentum Mod's Titlecard Logo"
+          sizes="auto 8rem"
+        />
         <h2 class="subheading" id="Subheading">
           A free first-person racing-platformer game built on the Source engine
         </h2>
@@ -48,10 +55,14 @@
           height="190"
           title="Steam Store Info"
         ></iframe>
+
+        <div id="ScrollDown" class="scroll-down" onclick="HeroBanner.scrollToNextSection()">
+          <svg viewBox="0 0 24 24">[[ path mdi/arrow-down ]]</svg>
+        </div>
       </div>
     </header>
 
-    <main>
+    <main id="Main">
       <div class="background-section">
         <section id="WhatIsMomentum">
           <div class="description">
@@ -84,7 +95,7 @@
         <section id="Gamemodes">
           <h1>Gamemodes</h1>
           <!-- Populated by JS -->
-          <div id="GamemodeSelection" class="gamemode-selection">
+          <div id="GamemodeSelection" class="gamemode-selection custom-scrollbar">
             <div id="TimeBar">
               <span></span>
             </div>
